@@ -1,0 +1,14 @@
+version: '3'
+services:
+  cypress:
+    image: cypress/included:12.11.0
+    volumes:
+      - ~/.Xauthority:/.Xauthority
+      - ./:/e2e
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    entrypoint: []
+    working_dir: /e2e
+    environment:
+      - DISPLAY=$DISPLAY
+    command: ["sh", "-c",  "chmod 777 /root -R; tail -f /dev/null"]
+    network_mode: "host"
